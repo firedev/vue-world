@@ -1,12 +1,16 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link :to="{ name: 'Show' }">Show</router-link> |
-      <router-link :to="{ name: 'EventCreate' }">Create</router-link>
-    </div>
-    <router-view />
-  </div>
+<template lang="pug">
+  #app
+    #nav
+      router-link(to="/") Home
+      |
+      | |
+      |
+      router-link(:to={ name: 'EventShow' }) Show
+      |
+      | |
+      |
+      router-link(:to={ name: 'EventCreate' }) Create
+    router-view
 </template>
 
 <style>

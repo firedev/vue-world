@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'no-debugger': 'off',
+    'comma-dangle': ['warning', 'always-multiline'],
   },
 
   'extends': [
