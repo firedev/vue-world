@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>World Events</h1>
+    <h1>Create Events</h1>
   </div>
 </template>

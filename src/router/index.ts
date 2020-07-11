@@ -1,21 +1,33 @@
-import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
-import EventList from "../views/EventList.vue";
+import Vue from 'vue'
+import VueRouter, { RouteConfig } from 'vue-router'
+import EventList from '../views/EventList.vue'
+import EventShow from '../views/EventShow.vue'
+import EventCreate from '../views/EventCreate.vue'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/",
-    name: "EventList",
+    path: '/create',
+    name: 'EventCreate',
+    component: EventCreate
+  },
+  {
+    path: '/show',
+    name: 'EventShow',
+    component: EventShow
+  },
+  {
+    path: '/',
+    name: 'EventList',
     component: EventList
   }
-];
+]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
-});
+})
 
-export default router;
+export default router
