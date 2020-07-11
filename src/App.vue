@@ -1,11 +1,16 @@
 <template lang="pug">
   #app
     #nav
-      router-link(to="/") Home
+      
+      router-link(to="/") 
+        Icon(icon="home")
+        |  Home
       |
       | |
       |
-      router-link(:to={ name: 'EventCreate' }) Create
+      router-link(:to={ name: 'EventCreate' })
+        Icon(icon="plus-square")
+        |  Create
     router-view
 </template>
 
@@ -26,10 +31,12 @@
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  opacity: 0.5;
+  text-decoration: none;
+  color: #42b983;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  opacity: 1;
 }
 </style>

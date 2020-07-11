@@ -20,14 +20,14 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'no-debugger': 'off',
-    'comma-dangle': ['warning', 'always-multiline'],
+    'comma-dangle': [1, 'always-multiline'],
   },
 
-  'extends': [
+  extends: [
     'plugin:vue/strongly-recommended',
     'eslint:recommended',
     '@vue/typescript/recommended',
     '@vue/prettier',
-    '@vue/prettier/@typescript-eslint'
-  ]
+    '@vue/prettier/@typescript-eslint',
+  ],
 }
