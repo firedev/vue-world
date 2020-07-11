@@ -1,4 +1,12 @@
 <template lang="pug">
   div
-    h1 Event 1
+    h1 Event {{ event }}
 </template>
+
+<script>
+export default {
+  props: {
+    event: { type: String, default: '' },
+  },
+}
+</script>
