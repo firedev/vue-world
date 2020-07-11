@@ -1,9 +1,8 @@
 <template lang="pug">
   .shadow.p2.r1
-    router-link(:to="{ name: 'EventShow', params: { id } }")
+    router-link.black(:to="{ name: 'EventShow', params: { id: event.id } }")
       | {{ event.time }} @ {{ event.date}}
-      h3
-        slot
+      h3 {{event.title}}
       .small(v-if="event.attendees.length")
         | {{ event.attendees.length }} attending
 </template>
@@ -13,13 +12,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class EventCard extends Vue {
-  @Prop() private id!: string
-  event = {
-    id: 1,
-    title: 'Beach Cleanup',
-    date: 'Jul 4',
-    time: '6:00',
-    attendees: [{ id: 'attnd1', name: 'Nikolay X' }],
-  }
+  @Prop() private event!: object
 }
 </script>

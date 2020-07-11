@@ -1,6 +1,6 @@
 <template lang="pug">
   #app.px2
-    NavBar.py2.border-bottom
+    NavBar.py2.mb3.border-bottom
     router-view
 </template>
 
