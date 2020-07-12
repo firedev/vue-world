@@ -1,7 +1,7 @@
 <template lang="pug">
   div
-    Icon(icon="passport")
-    span.bold  Event {{ event.id }}
+    BaseIcon.bold(icon="passport")
+      |  Event {{ event.id }}
     h1.p0.mb2 {{ event.title }}
     | {{ event.time }} @ {{ event.date}}
     .small(v-if="event.attendees.length")

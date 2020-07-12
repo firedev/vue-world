@@ -2,17 +2,24 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import {
-  faHome,
-  faPlusSquare,
-  faPassport,
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
 
-library.add(faHome, faPlusSquare, faPassport)
+const requireComponent = require.context(
+  './components',
+  false,
+  /Base[A-Z]\w+\.(vue|js)$/,
+)
 
-Vue.component('Icon', FontAwesomeIcon)
+requireComponent.keys().forEach(fileName => {
+  const componentConfig = requireComponent(fileName)
+  const componentName = upperFirst(
+    camelCase((fileName.split('/').pop() || '').replace(/\.\w+$/, '')),
+  )
+
+  // Register component globally
+  Vue.component(componentName, componentConfig.default || componentConfig)
+})
 
 Vue.config.productionTip = false
 

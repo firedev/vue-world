@@ -1,13 +1,13 @@
 <template lang="pug">
   #nav
     router-link(to="/") 
-      Icon(icon="home")
+      BaseIcon(icon="home")
       span.bold  Home
     
     span.px1.muted |
     
     router-link(:to={ name: 'EventCreate' })
-      Icon(icon="plus-square")
+      BaseIcon(icon="plus-square")
       span.bold  Create
 </template>
 
