@@ -1,7 +1,9 @@
 <template lang="pug">
   div 
-    h1 World Events
-    EventCard(v-for="event in events" :key="event.id" :event="event")
+    h1.center World Events
+    EventCard.md-col-6.mx-auto(
+      v-for="event in events" :key="event.id" :event="event"
+    )
 </template>
 
 <script lang="ts">

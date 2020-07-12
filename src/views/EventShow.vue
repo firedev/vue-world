@@ -2,7 +2,10 @@
   div
     Icon(icon="passport")
     span.bold  Event {{ event.id }}
-    h1 {{ event.title }}
+    h1.p0.mb2 {{ event.title }}
+    | {{ event.time }} @ {{ event.date}}
+    .small(v-if="event.attendees.length")
+      | {{ event.attendees.length }} attending
 
 </template>
 
