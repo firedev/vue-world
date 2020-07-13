@@ -1,9 +1,18 @@
 {
-  "events": {
-    "id": 1,
-    "title": "Beach Cleanup",
-    "date": "Jul 4",
-    "time": "6:00",
-    "attendees": [{ "id": "attnd1", "name": "Nikolay X" }]
-  }
+  "events": [
+    {
+      "id": 1,
+      "title": "Beach Cleanup",
+      "date": "Jul 4",
+      "time": "6:00",
+      "attendees": [{ "id": "attnd1", "name": "Nikolay X" }]
+    },
+    {
+      "id": 2,
+      "title": "Job Interview",
+      "date": "Aug 13",
+      "time": "12:00",
+      "attendees": [{ "id": "attnd1", "name": "Nikolay X" }]
+    }
+  ]
 }

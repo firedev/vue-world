@@ -5,13 +5,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serve:db": "json-server --watch src.db.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "@types/lodash": "^4.14.157",
+    "axios": "^0.19.2",
     "core-js": "^3.6.5",
     "pug": "^3.0.0",
     "vue": "^2.6.11",
@@ -34,6 +36,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
+    "json-server": "^0.16.1",
     "prettier": "^1.19.1",
     "pug-plain-loader": "^1.0.0",
     "typescript": "~3.9.3",
