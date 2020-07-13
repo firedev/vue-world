@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import axios from 'axios'
+import EventService from '@/services/EventService'
 import EventCard from '@/components/EventCard.vue'
 
 @Component({
@@ -17,8 +17,7 @@ import EventCard from '@/components/EventCard.vue'
 export default class EventList extends Vue {
   events = []
   created() {
-    axios
-      .get('http://localhost:3000/events')
+    EventService.getEvents()
       .then(response => (this.events = response.data))
       .catch(error => console.error(error.message))
   }

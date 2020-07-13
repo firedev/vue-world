@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import axios from 'axios'
+import EventService from '@/services/EventService'
 
 @Component
 export default class EventShow extends Vue {
@@ -19,8 +19,7 @@ export default class EventShow extends Vue {
 
   event = {}
   created() {
-    axios
-      .get('http://localhost:3000/events/' + this.$props.id)
+    EventService.getEvent(this.$props.id)
       .then(response => (this.event = response.data))
       .catch(error => console.error(error.message))
   }
