@@ -1,23 +1,64 @@
 <template lang="pug">
   div
-    BaseIcon(icon="user") {{user.name}}
-
-    h1 Create Events
-
-    BaseIcon(icon="address-book") Categories: {{catLength}}
-    ul
-      li(v-for="category in categories") {{category}}
+    form(@submit.prevent="eventCreate")
+      h1 Create Events
+      .flex
+        Datepicker(v-model="event.date" class="border" placeholder="Select a date")
+        select(v-model="event.time")
+          option(v-for="time in times" :value="time") {{ time}}
+      p
+        BaseIcon(icon="user") {{user.name}}
+      p
+        input(v-model="event.title" placeholder="title")
+      p
+        BaseIcon(icon="address-book") Categories: {{catLength}}
+      .flex
+        div(v-for="category in categories")
+          label
+            input(type="radio" v-model="event.category" name="category" :value="category")
+            | {{ category}}
+      p
+        button(type="submit") Ok
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Model } from 'vue-property-decorator'
 import { mapState, mapGetters } from 'vuex'
+import Datepicker from 'vuejs-datepicker'
+import { EventType } from '../services/EventService'
 
 @Component({
+  components: {
+    Datepicker,
+  },
   computed: {
     ...mapGetters(['catLength']),
     ...mapState(['user', 'categories']),
   },
 })
-export default class EventCreate extends Vue {}
+export default class EventCreate extends Vue {
+  event = {}
+  times = Array(24)
+    .fill(0)
+    .map((_, i) => i + ':00')
+
+  eventCreate() {
+    this.$store.dispatch('eventCreate', this.event)
+  }
+
+  createNewEvent(): EventType {
+    return {
+      id: new Date().getTime(),
+      user: this.$store.state.user,
+      date: new Date(),
+      time: '0:00',
+      category: this.$store.state.categories[0],
+      title: '',
+      attendees: [],
+    }
+  }
+  mounted() {
+    this.event = this.createNewEvent()
+  }
+}
 </script>

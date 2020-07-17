@@ -3,16 +3,38 @@
     {
       "id": 1,
       "title": "Beach Cleanup",
-      "date": "Jul 4",
+      "date": "2020-10-10",
       "time": "6:00",
-      "attendees": [{ "id": "attnd1", "name": "Nikolay X" }]
+      "attendees": [
+        {
+          "id": "attnd1",
+          "name": "Nikolay X"
+        }
+      ]
     },
     {
       "id": 2,
       "title": "Job Interview",
-      "date": "Aug 13",
+      "date": "2020-08-13",
       "time": "12:00",
-      "attendees": [{ "id": "attnd1", "name": "Nikolay X" }]
+      "attendees": [
+        {
+          "id": "attnd1",
+          "name": "Nikolay X"
+        }
+      ]
+    },
+    {
+      "id": 1595012153229,
+      "user": {
+        "id": "nick",
+        "name": "Nikolay X"
+      },
+      "date": "2020-07-13T18:55:00.000Z",
+      "time": "13:00",
+      "category": "vue",
+      "title": "Hello?",
+      "attendees": []
     }
   ]
 }
