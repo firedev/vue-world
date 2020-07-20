@@ -42,7 +42,7 @@ export default class EventCreate extends Vue {
     .fill(0)
     .map((_, i) => i + ':00')
 
-  mounted() {
+  created() {
     this.event = this.createNewEvent()
   }
 
