@@ -21,8 +21,9 @@ const store = new Vuex.Store({
   },
   actions: {
     eventCreate({ commit }, event: EventType) {
-      EventService.postEvent(event)
-      commit('EVENT_CREATE', event)
+      return EventService.postEvent(event).then(() => {
+        commit('EVENT_CREATE', event)
+      })
     },
   },
   modules: {},

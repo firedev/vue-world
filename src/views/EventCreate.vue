@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Model } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { mapState, mapGetters } from 'vuex'
 import Datepicker from 'vuejs-datepicker'
 import { EventType } from '../services/EventService'
@@ -37,13 +37,27 @@ import { EventType } from '../services/EventService'
   },
 })
 export default class EventCreate extends Vue {
-  event = {}
+  event: EventType | undefined = undefined
   times = Array(24)
     .fill(0)
     .map((_, i) => i + ':00')
 
+  mounted() {
+    this.event = this.createNewEvent()
+  }
+
   eventCreate() {
-    this.$store.dispatch('eventCreate', this.event)
+    this.$store
+      .dispatch('eventCreate', this.event)
+      .then(() => {
+        const event = this.event as EventType
+        this.$router.push({
+          name: 'EventShow',
+          params: { id: event.id.toString() },
+        })
+        this.event = this.createNewEvent()
+      })
+      .catch(() => console.log('Something went wrong'))
   }
 
   createNewEvent(): EventType {
@@ -56,9 +70,6 @@ export default class EventCreate extends Vue {
       title: '',
       attendees: [],
     }
-  }
-  mounted() {
-    this.event = this.createNewEvent()
   }
 }
 </script>
