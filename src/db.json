@@ -1,28 +1,24 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "name": "Nikolay X"
+    }
+  ],
   "events": [
     {
       "id": 1,
       "title": "Beach Cleanup",
       "date": "2020-10-10",
       "time": "6:00",
-      "attendees": [
-        {
-          "id": "attnd1",
-          "name": "Nikolay X"
-        }
-      ]
+      "attendees": [1]
     },
     {
       "id": 2,
       "title": "Job Interview",
       "date": "2020-08-13",
       "time": "12:00",
-      "attendees": [
-        {
-          "id": "attnd1",
-          "name": "Nikolay X"
-        }
-      ]
+      "attendees": [1]
     },
     {
       "id": 1595012153229,
@@ -31,10 +27,58 @@
         "name": "Nikolay X"
       },
       "date": "2020-07-13T18:55:00.000Z",
+      "time": "11:00",
+      "category": "vue",
+      "title": "Hello 1",
+      "attendees": [1]
+    },
+    {
+      "id": 1595012153230,
+      "user": {
+        "id": "nick",
+        "name": "Nikolay X"
+      },
+      "date": "2020-07-14",
+      "time": "12:00",
+      "category": "vue",
+      "title": "Hello 2",
+      "attendees": [1]
+    },
+    {
+      "id": 1595012153233,
+      "user": {
+        "id": "nick",
+        "name": "Nikolay X"
+      },
+      "date": "2020-07-14",
       "time": "13:00",
       "category": "vue",
-      "title": "Hello?",
-      "attendees": []
+      "title": "Hello 3",
+      "attendees": [1]
+    },
+    {
+      "id": 1595012153235,
+      "user": {
+        "id": "nick",
+        "name": "Nikolay X"
+      },
+      "date": "2020-07-14",
+      "time": "14:00",
+      "category": "vue",
+      "title": "Hello 4",
+      "attendees": [1]
+    },
+    {
+      "id": 1595012153240,
+      "user": {
+        "id": "nick",
+        "name": "Nikolay X"
+      },
+      "date": "2020-07-14",
+      "time": "15:00",
+      "category": "vue",
+      "title": "Hello 5",
+      "attendees": [1]
     }
   ]
 }

@@ -1,7 +1,7 @@
 <template lang="pug">
   #app.px2
     NavBar.py2.mb3.border-bottom
-    router-view
+    router-view(:key="$route.fullPath")
 </template>
 
 <style>

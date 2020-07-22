@@ -7,16 +7,26 @@
 <script lang="ts">
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
-  faHome,
-  faUser,
-  faPlusSquare,
-  faPassport,
   faAddressBook,
+  faArrowLeft,
+  faArrowRight,
+  faHome,
+  faPassport,
+  faPlusSquare,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-library.add(faHome, faUser, faPlusSquare, faPassport, faAddressBook)
+library.add(
+  faAddressBook,
+  faArrowLeft,
+  faArrowRight,
+  faHome,
+  faPassport,
+  faPlusSquare,
+  faUser,
+)
 
 @Component({
   components: { FontAwesomeIcon },
