@@ -11,17 +11,16 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import EventService from '@/services/EventService'
+import { mapState } from 'vuex'
 
-@Component
+@Component({
+  computed: mapState(['event']),
+})
 export default class EventShow extends Vue {
   @Prop() private id!: string
 
-  event = {}
   created() {
-    EventService.getEvent(this.$props.id)
-      .then(response => (this.event = response.data))
-      .catch(error => console.error(error.message))
+    this.$store.dispatch('eventFetch', { id: this.$props.id })
   }
 }
 </script>

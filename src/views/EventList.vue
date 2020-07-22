@@ -29,6 +29,7 @@ import EventCard from '@/components/EventCard.vue'
 })
 export default class EventList extends Vue {
   perPage = 3
+
   created() {
     this.$store.dispatch('eventsFetch', {
       perPage: this.perPage,
