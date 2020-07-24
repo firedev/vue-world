@@ -38,7 +38,9 @@ export default class EventList extends Vue {
   }
 
   get page() {
-    return parseInt(this.$route.query.page.toString()) || 1
+    return this.$route.query.page
+      ? parseInt(this.$route.query.page.toString())
+      : 1
   }
   get showPrev() {
     return this.page > 1

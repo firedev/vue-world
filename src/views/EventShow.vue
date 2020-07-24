@@ -22,5 +22,8 @@ export default class EventShow extends Vue {
   created() {
     this.$store.dispatch('eventFetch', { id: this.$props.id })
   }
+  beforeDestroy() {
+    this.$store.dispatch('eventClear')
+  }
 }
 </script>

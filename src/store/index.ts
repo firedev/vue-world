@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import EventService, { EventType } from '@/services/EventService'
+import { EventType } from '@/services/EventService'
 
 import { eventActions, eventMutations } from '@/store/events'
 

@@ -1,5 +1,10 @@
-import { StoreType, StateType } from '@/store'
-import EventService, { EventType } from '@/services/EventService'
+import { StateType } from '@/store'
+import {
+  getEvent,
+  getEvents,
+  postEvent,
+  EventType,
+} from '@/services/EventService'
 
 enum Mutations {
   EVENT_CREATE = 'EVENT_CREATE',
@@ -27,25 +32,37 @@ const eventMutations = {
 }
 
 const eventActions = {
-  async eventCreate({ commit }, event: EventType) {
-    return EventService.postEvent(event).then(() => {
+  async eventCreate({ commit }: { commit: Function }, event: EventType) {
+    return postEvent(event).then(() => {
       commit(Mutations.EVENT_CREATE, event)
     })
   },
-  async eventsFetch({ commit }, { perPage, page }) {
-    return EventService.getEvents({ perPage, page })
-      .then(response =>
-        commit(Mutations.EVENTS_SET, {
-          events: response.data,
-          eventsTotal: parseInt(response.headers['x-total-count']),
-        }),
+  async eventsFetch(
+    { commit }: { commit: Function },
+    { perPage, page }: { perPage: number; page: number },
+  ) {
+    return getEvents({ perPage, page })
+      .then(
+        (response: {
+          data: EventType[]
+          headers: { 'x-total-count': string }
+        }) =>
+          commit(Mutations.EVENTS_SET, {
+            events: response.data,
+            eventsTotal: parseInt(response.headers['x-total-count']),
+          }),
       )
-      .catch(error => console.error(error.message))
+      .catch((error: Error) => console.error(error.message))
   },
-  async eventFetch({ commit }, { id }: { id: number }) {
-    return EventService.getEvent(id)
-      .then(response => commit(Mutations.EVENT_SET, { event: response.data }))
-      .catch(error => console.error(error.message))
+  async eventFetch({ commit }: { commit: Function }, { id }: { id: number }) {
+    return getEvent(id)
+      .then((response: { data: EventType }) =>
+        commit(Mutations.EVENT_SET, { event: response.data }),
+      )
+      .catch((error: Error) => console.error(error.message))
+  },
+  async eventClear({ commit }: { commit: Function }) {
+    commit(Mutations.EVENT_SET, { event: {} })
   },
 }
 
