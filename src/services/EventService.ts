@@ -1,17 +1,5 @@
 import axios from 'axios'
 
-type UserType = { id: string; name: string }
-
-type EventType = {
-  id: number
-  title: string
-  date: string | Date
-  time: string
-  attendees: UserType[]
-  user: UserType
-  category: string
-}
-
 const apiClient = axios.create({
   baseURL: 'http://localhost:3000',
   withCredentials: false,
@@ -28,4 +16,4 @@ const getEvent = (id: string | number) => apiClient.get(`/events/${id}`)
 
 const postEvent = (event: EventType) => apiClient.post('/events', event)
 
-export { getEvent, getEvents, postEvent, EventType }
+export { getEvent, getEvents, postEvent }
