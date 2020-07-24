@@ -33,7 +33,7 @@ const eventMutations = {
 
 const eventActions = {
   async eventCreate({ commit }: { commit: Function }, event: EventType) {
-    return postEvent(event).then(() => {
+    postEvent(event).then(() => {
       commit(Mutations.EVENT_CREATE, event)
     })
   },
@@ -41,7 +41,7 @@ const eventActions = {
     { commit }: { commit: Function },
     { perPage, page }: { perPage: number; page: number },
   ) {
-    return getEvents({ perPage, page })
+    getEvents({ perPage, page })
       .then(
         (response: {
           data: EventType[]
@@ -54,8 +54,18 @@ const eventActions = {
       )
       .catch((error: Error) => console.error(error.message))
   },
-  async eventFetch({ commit }: { commit: Function }, { id }: { id: number }) {
-    return getEvent(id)
+  async eventFetch(
+    {
+      commit,
+      getters,
+    }: { commit: Function; getters: { getEventById: Function } },
+    { id }: { id: number },
+  ) {
+    const event = getters.getEventById(id)
+    if (event) {
+      commit(Mutations.EVENT_SET, { event: event })
+    }
+    getEvent(id)
       .then((response: { data: EventType }) =>
         commit(Mutations.EVENT_SET, { event: response.data }),
       )
@@ -66,4 +76,9 @@ const eventActions = {
   },
 }
 
-export { eventMutations, eventActions }
+const eventGetters = {
+  getEventById: (state: StateType) => (id: number) =>
+    state.events.find((event: EventType) => event.id === id),
+}
+
+export { eventMutations, eventActions, eventGetters }

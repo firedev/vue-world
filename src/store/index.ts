@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { EventType } from '@/services/EventService'
 
-import { eventActions, eventMutations } from '@/store/events'
+import { eventActions, eventMutations, eventGetters } from '@/store/events'
 
 Vue.use(Vuex)
 
@@ -23,6 +23,7 @@ const store = new Vuex.Store({
   actions: { ...eventActions },
   modules: {},
   getters: {
+    ...eventGetters,
     catLength: state => state.categories.length,
   },
 })
