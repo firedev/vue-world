@@ -1,10 +1,4 @@
-import { StateType } from '@/store'
-import {
-  getEvent,
-  getEvents,
-  postEvent,
-  EventType,
-} from '@/services/EventService'
+import { getEvent, getEvents, postEvent } from '@/services/EventService'
 
 enum Mutations {
   EVENT_CREATE = 'EVENT_CREATE',
@@ -12,35 +6,47 @@ enum Mutations {
   EVENT_SET = 'EVENT_SET',
 }
 
-const eventMutations = {
-  [Mutations.EVENT_CREATE]: (state: StateType, event: EventType) => {
+const state = {
+  event: {},
+  events: new Array<EventType>(),
+  total: 0,
+}
+
+type EventStateType = typeof state
+
+const namespaced = true
+
+const mutations = {
+  [Mutations.EVENT_CREATE]: (state: EventStateType, event: EventType) => {
     state.events.push(event)
   },
   [Mutations.EVENTS_SET]: (
-    state: StateType,
-    { events, eventsTotal }: { events: EventType[]; eventsTotal: number },
+    state: EventStateType,
+    { events, total }: { events: EventType[]; total: number },
   ) => {
     state.events = events
-    state.eventsTotal = eventsTotal
+    state.total = total
   },
   [Mutations.EVENT_SET]: (
-    state: StateType,
+    state: EventStateType,
     { event }: { event: EventType },
   ) => {
     state.event = event
   },
 }
 
-const eventActions = {
-  async eventCreate({ commit }: { commit: Function }, event: EventType) {
+const actions = {
+  eventCreate: (
+    { commit, rootState }: { commit: Function; rootState: { user: object } },
+    event: EventType,
+  ) =>
     postEvent(event).then(() => {
-      commit(Mutations.EVENT_CREATE, event)
-    })
-  },
-  async eventsFetch(
+      commit(Mutations.EVENT_CREATE, { ...event, user: rootState.user })
+    }),
+  eventsFetch: (
     { commit }: { commit: Function },
     { perPage, page }: { perPage: number; page: number },
-  ) {
+  ) => {
     getEvents({ perPage, page })
       .then(
         (response: {
@@ -49,18 +55,18 @@ const eventActions = {
         }) =>
           commit(Mutations.EVENTS_SET, {
             events: response.data,
-            eventsTotal: parseInt(response.headers['x-total-count']),
+            total: parseInt(response.headers['x-total-count']),
           }),
       )
       .catch((error: Error) => console.error(error.message))
   },
-  async eventFetch(
+  eventFetch: (
     {
       commit,
       getters,
     }: { commit: Function; getters: { getEventById: Function } },
     { id }: { id: number },
-  ) {
+  ) => {
     const event = getters.getEventById(id)
     if (event) {
       commit(Mutations.EVENT_SET, { event: event })
@@ -71,14 +77,14 @@ const eventActions = {
       )
       .catch((error: Error) => console.error(error.message))
   },
-  async eventClear({ commit }: { commit: Function }) {
+  eventClear: ({ commit }: { commit: Function }) => {
     commit(Mutations.EVENT_SET, { event: {} })
   },
 }
 
-const eventGetters = {
-  getEventById: (state: StateType) => (id: number) =>
+const getters = {
+  getEventById: (state: EventStateType) => (id: number) =>
     state.events.find((event: EventType) => event.id === id),
 }
 
-export { eventMutations, eventActions, eventGetters }
+export { mutations, actions, getters, state, namespaced, EventStateType }

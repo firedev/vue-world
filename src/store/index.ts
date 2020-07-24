@@ -1,29 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { EventType } from '@/services/EventService'
 
-import { eventActions, eventMutations, eventGetters } from '@/store/events'
+import * as events from '@/store/events'
+import * as user from '@/store/user'
 
 Vue.use(Vuex)
 
 const state = {
-  user: {
-    id: 'nick',
-    name: 'Nikolay X',
-  },
-  event: {},
-  events: new Array<EventType>(),
-  eventsTotal: 0,
   categories: ['vue', 'typescript'],
 }
 
 const store = new Vuex.Store({
   state,
-  mutations: { ...eventMutations },
-  actions: { ...eventActions },
-  modules: {},
+  mutations: {},
+  actions: {},
+  modules: { events, user },
   getters: {
-    ...eventGetters,
     catLength: state => state.categories.length,
   },
 })

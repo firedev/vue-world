@@ -11,74 +11,112 @@
       "title": "Beach Cleanup",
       "date": "2020-10-10",
       "time": "6:00",
-      "attendees": [1]
+      "attendees": [
+        1
+      ]
     },
     {
       "id": 2,
       "title": "Job Interview",
       "date": "2020-08-13",
       "time": "12:00",
-      "attendees": [1]
+      "attendees": [
+        1
+      ]
     },
     {
       "id": 1595012153229,
       "user": {
-        "id": "nick",
+        "id": 1,
         "name": "Nikolay X"
       },
       "date": "2020-07-13T18:55:00.000Z",
       "time": "11:00",
       "category": "vue",
       "title": "Hello 1",
-      "attendees": [1]
+      "attendees": [
+        1
+      ]
     },
     {
       "id": 1595012153230,
       "user": {
-        "id": "nick",
+        "id": 1,
         "name": "Nikolay X"
       },
       "date": "2020-07-14",
       "time": "12:00",
       "category": "vue",
       "title": "Hello 2",
-      "attendees": [1]
+      "attendees": [
+        1
+      ]
     },
     {
       "id": 1595012153233,
       "user": {
-        "id": "nick",
+        "id": 1,
         "name": "Nikolay X"
       },
       "date": "2020-07-14",
       "time": "13:00",
       "category": "vue",
       "title": "Hello 3",
-      "attendees": [1]
+      "attendees": [
+        1
+      ]
     },
     {
       "id": 1595012153235,
       "user": {
-        "id": "nick",
+        "id": 1,
         "name": "Nikolay X"
       },
       "date": "2020-07-14",
       "time": "14:00",
       "category": "vue",
       "title": "Hello 4",
-      "attendees": [1]
+      "attendees": [
+        1
+      ]
     },
     {
       "id": 1595012153240,
       "user": {
-        "id": "nick",
+        "id": 1,
         "name": "Nikolay X"
       },
       "date": "2020-07-14",
       "time": "15:00",
       "category": "vue",
       "title": "Hello 5",
-      "attendees": [1]
+      "attendees": [
+        1
+      ]
+    },
+    {
+      "id": 1595604301194,
+      "user": {
+        "id": 1,
+        "name": "Nikolay X"
+      },
+      "date": "2020-07-24T15:25:01.194Z",
+      "time": "0:00",
+      "category": "vue",
+      "title": "User test",
+      "attendees": []
+    },
+    {
+      "id": 1595605685539,
+      "user": {
+        "id": 1,
+        "name": "Nikolay X"
+      },
+      "date": "2020-07-24T15:48:05.539Z",
+      "time": "0:00",
+      "category": "vue",
+      "title": "namespaced",
+      "attendees": []
     }
   ]
 }

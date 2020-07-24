@@ -1,6 +1,8 @@
 <template lang="pug">
   div
-    h1.center World Events
+    .center.my2
+      h1 World Events
+      BaseIcon(icon="user") {{ user.name}}
     .center
       router-link(v-if="showPrev" :to="{name: 'EventList', query: { page: page -1 } }" rel="prev")
         BaseIcon(icon="arrow-left")
@@ -8,7 +10,7 @@
         BaseIcon(icon="arrow-right")
 
     EventCard.md-col-6.mx-auto.my2(
-      v-for="event in events" :key="event.id" :event="event"
+      v-for="event in events.events" :key="event.id" :event="event"
     )
 
     .center
@@ -20,18 +22,19 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import EventCard from '@/components/EventCard.vue'
 
 @Component({
   components: { EventCard },
-  computed: mapState(['events']),
+  computed: mapState(['events', 'user']),
+  methods: mapActions('events', ['eventsFetch']),
 })
 export default class EventList extends Vue {
   perPage = 3
 
   created() {
-    this.$store.dispatch('eventsFetch', {
+    this.eventsFetch({
       perPage: this.perPage,
       page: this.page,
     })
@@ -46,7 +49,7 @@ export default class EventList extends Vue {
     return this.page > 1
   }
   get showNext() {
-    return this.page * this.perPage < this.$store.state.eventsTotal
+    return this.page * this.perPage < this.events.total
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    form(@submit.prevent="eventCreate")
+    form(@submit.prevent="handleSubmit")
       h1 Create Events
       .flex
         Datepicker(v-model="event.date" class="border" placeholder="Select a date")
@@ -9,7 +9,7 @@
       p
         BaseIcon(icon="user") {{user.name}}
       p
-        input(v-model="event.title" placeholder="title")
+        input.border.rounded(v-model="event.title" placeholder="Event title")
       p
         BaseIcon(icon="address-book") Categories: {{catLength}}
       .flex
@@ -23,9 +23,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import Datepicker from 'vuejs-datepicker'
-import { EventType } from '../services/EventService'
 
 @Component({
   components: {
@@ -35,6 +34,7 @@ import { EventType } from '../services/EventService'
     ...mapGetters(['catLength']),
     ...mapState(['user', 'categories']),
   },
+  methods: mapActions('events', ['eventCreate']),
 })
 export default class EventCreate extends Vue {
   event: EventType | undefined = undefined
@@ -46,9 +46,8 @@ export default class EventCreate extends Vue {
     this.event = this.createNewEvent()
   }
 
-  eventCreate() {
-    this.$store
-      .dispatch('eventCreate', this.event)
+  handleSubmit() {
+    this.eventCreate(this.event)
       .then(() => {
         const event = this.event as EventType
         this.$router.push({

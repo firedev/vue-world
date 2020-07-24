@@ -3,7 +3,7 @@
     BaseIcon.bold(icon="passport")
       |  Event {{ event.id }}
     h1.p0.mb2 {{ event.title }}
-    | {{ event.time }} @ {{ event.date}}
+    | {{ event.time }} @ {{ date}}
     .small(v-if="event.attendees.length")
       | {{ event.attendees.length }} attending
 
@@ -11,19 +11,27 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
 
 @Component({
-  computed: mapState(['event']),
+  methods: mapActions('events', ['eventFetch', 'eventClear']),
 })
 export default class EventShow extends Vue {
   @Prop() private id!: string
 
+  get event() {
+    return this.$store.state.events.event
+  }
+
+  get date() {
+    return new Date(this.event.date).toLocaleDateString()
+  }
+
   created() {
-    this.$store.dispatch('eventFetch', { id: this.$props.id })
+    this.eventFetch({ id: this.$props.id })
   }
   beforeDestroy() {
-    this.$store.dispatch('eventClear')
+    this.eventClear()
   }
 }
 </script>
