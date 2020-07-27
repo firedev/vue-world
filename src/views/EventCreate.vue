@@ -31,7 +31,7 @@ import Datepicker from 'vuejs-datepicker'
     Datepicker,
   },
   computed: {
-    ...mapGetters(['catLength']),
+    ...mapGetters('categories', ['catLength']),
     ...mapState(['user', 'categories']),
   },
   methods: mapActions('events', ['eventCreate']),
@@ -56,7 +56,7 @@ export default class EventCreate extends Vue {
         })
         this.event = this.createNewEvent()
       })
-      .catch(() => console.log('Something went wrong'))
+      .catch(error => console.log('Something went wrong', error))
   }
 
   createNewEvent(): EventType {

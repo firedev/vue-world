@@ -3,24 +3,16 @@ import Vuex from 'vuex'
 
 import * as events from '@/store/events'
 import * as user from '@/store/user'
+import * as notifications from '@/store/notifications'
+import * as categories from '@/store/categories'
 
 Vue.use(Vuex)
 
-const state = {
-  categories: ['vue', 'typescript'],
-}
-
 const store = new Vuex.Store({
-  state,
-  mutations: {},
-  actions: {},
-  modules: { events, user },
-  getters: {
-    catLength: state => state.categories.length,
-  },
+  modules: { events, user, notifications, categories },
 })
 
 type StoreType = typeof store
-type StateType = typeof state
+type StateType = typeof store.state
 export { StoreType, StateType }
 export default store

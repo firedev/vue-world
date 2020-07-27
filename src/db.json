@@ -117,6 +117,18 @@
       "category": "vue",
       "title": "namespaced",
       "attendees": []
+    },
+    {
+      "id": 1595823879661,
+      "user": {
+        "id": 1,
+        "name": "Nikolay X"
+      },
+      "date": "2020-07-27T04:24:39.661Z",
+      "time": "0:00",
+      "category": "vue",
+      "title": "",
+      "attendees": []
     }
   ]
 }

@@ -14,6 +14,8 @@ import {
   faPassport,
   faPlusSquare,
   faUser,
+  faExclamationTriangle,
+  faSmile,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { Component, Prop, Vue } from 'vue-property-decorator'
@@ -26,6 +28,8 @@ library.add(
   faPassport,
   faPlusSquare,
   faUser,
+  faExclamationTriangle,
+  faSmile,
 )
 
 @Component({

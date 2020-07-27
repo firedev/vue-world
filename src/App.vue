@@ -1,6 +1,7 @@
 <template lang="pug">
   #app.px2
     NavBar.py2.mb3.border-bottom
+    NotificationContainer.center
     router-view(:key="$route.fullPath")
 </template>
 
@@ -23,8 +24,9 @@
 
 <script lang="ts">
 import NavBar from '@/components/NavBar.vue'
+import NotificationContainer from '@/components/NotificationContainer.vue'
 
 export default {
-  components: { NavBar },
+  components: { NavBar, NotificationContainer },
 }
 </script>
