@@ -15,7 +15,7 @@
     "@types/lodash": "^4.14.157",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
-    "pug": "^3.0.0",
+    "pug": "^3.0.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.4.2",
